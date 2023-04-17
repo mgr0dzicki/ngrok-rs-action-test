@@ -87,6 +87,7 @@ jobs:
         name: semver checks
         with:
           package: ${{ matrix.crate }}
+          prefix-key: ${{ matrix.crate }}
 
   # These are sequenced because the muxado version referenced by ngrok has to
   # exist on crates.io before ngrok can be published.
