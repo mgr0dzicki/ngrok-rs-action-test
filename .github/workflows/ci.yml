@@ -83,13 +83,11 @@ jobs:
         crate: [muxado, ngrok]
     steps:
       - uses: actions/checkout@v2
-      - uses: jrobsonchase/direnv-action@v0.7
-      - uses: ./.github/workflows/rust-cache
-      - uses: actions-rs/cargo@v1
+      - uses: obi1kenobi/cargo-semver-checks-action@main
         name: semver checks
         with:
-          command: semver-checks
-          args: check-release -p ${{ matrix.crate }}
+          package: ${{ matrix.crate }}
+          prefix-key: ${{ matrix.crate }}
 
   # These are sequenced because the muxado version referenced by ngrok has to
   # exist on crates.io before ngrok can be published.
